@@ -6,7 +6,13 @@ import { users as userData } from "../data/data";
 function TweetsContainer() {
   const [users, setUsers] = useState(userData);
 
-  console.log("In TweetsContainer, state is", users);
+  function changeTweet(key) {
+      const newUserArray = users.filter(user => user.id !== key)
+      setUsers(newUserArray)
+    // console.log(newUserArray)
+  }
+
+  //console.log("In TweetsContainer, state is", userData);
   return (
     <div className="ui main container">
       <div className="ui grid">
@@ -16,7 +22,7 @@ function TweetsContainer() {
         </div>
         <div className="ten wide column">
           <h2 className="ui header">Tweets</h2>
-          <TweetList user={users[0]} />
+          <TweetList user={changeTweet}/>
         </div>
       </div>
     </div>
